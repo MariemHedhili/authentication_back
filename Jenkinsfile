@@ -40,7 +40,7 @@ pipeline{
                 withSonarQubeEnv(installationName: 'SonarServer', credentialsId: 'sonar-credentials') {
                      sh """$SCANNER_HOME/bin/sonar-scanner \
                      -Dsonar.projectKey=$PROJECT_NAME \
-                     -Dsonar.java.binaries=buil/classes"""
+                     -Dsonar.java.binaries=build/classes"""
                 }
              }
         }             
