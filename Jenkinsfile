@@ -41,7 +41,8 @@ npipeline{
                 sh "./gradlew sonarqube \
                   -Dsonar.projectKey=${PROJECT_NAME} \
                   -Dsonar.host.url=${env.SONAR_HOST_URL} \
-                  -Dsonar.login=${env.SONAR_AUTH_TOKEN} \                  
+                  -Dsonar.login=${env.SONAR_AUTH_TOKEN} \
+                  -Dsonar.projectName=${PROJECT_NAME} \
                   -Dsonar.projectVersion=${BUILD_NUMBER}"
                 }
              }
