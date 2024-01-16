@@ -38,9 +38,7 @@ npipeline{
             steps {
                  dir('backend') {            
                  withSonarQubeEnv(credentialsId: 'sonar-credentials',installationName: 'SonarServer') {
-                    sh """$SCANNER_HOME/bin/sonar-scanner \
-                        -Dsonar.projectKey=$PROJECT_NAME \
-                        -Dsonar.binaries=./build/classes"""
+                    sh '$SCANNER_HOME/bin/sonar-scanner  -Dsonar.projectKey=$PROJECT_NAME  -Dsonar.binaries=./build/classes'
                      
                     
                 }              
