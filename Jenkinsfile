@@ -1,4 +1,4 @@
-pipeline{
+npipeline{
     
 
     agent any 
@@ -33,7 +33,7 @@ pipeline{
       stage('SonarQube Analysis') {
             environment {
                 SCANNER_HOME = tool 'SonarQube'
-                PROJECT_NAME = "authentication_back"
+                PROJECT_NAME = "backend"
             }
             steps {
                  dir('backend') {            
