@@ -2,7 +2,9 @@ pipeline{
     
 
     agent any 
-    
+     tools {
+        gradle 
+    }
     stages {
         
         stage('Git Checkout'){
@@ -19,9 +21,11 @@ pipeline{
         stage('Build') {
             steps {
                 script {
-                    withGradle(gradle: 'gradle') {
-                        sh 'gradle clean build'
-                    } 
+                    sh 'gradle init'
+                    sh "echo 'building..'"
+                    withGradle {
+                   sh 'gradle wrapper build'
+                  } 
                 }
             } 
         } 
