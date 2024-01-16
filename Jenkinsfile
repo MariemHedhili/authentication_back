@@ -11,7 +11,7 @@ pipeline{
                 
                 script{
                     
-                    git branch: 'main', url: 'https://github.com/MariemHedhili/authentication_Back.git'
+                    git branch: 'main', url: 'https://github.com/MariemHedhili/authentication_back.git'
                 }
             }
         }
