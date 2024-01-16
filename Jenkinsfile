@@ -2,7 +2,9 @@ pipeline{
     
 
     agent any 
-    
+    tools {
+        gradle "gradle"
+    }
     stages {
         
         stage('Git Checkout'){
@@ -16,6 +18,14 @@ pipeline{
             }
         }
         
-        
+        stage('Build SpringBoot App') {
+            steps {
+                script {
+                    dir('backend')  
+                       sh './gradlew clean build'
+                    }
+                }
+            }
+        }
     }     
 }
