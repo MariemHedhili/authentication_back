@@ -33,17 +33,14 @@ npipeline{
       stage('SonarQube Analysis') {
             environment {
                 SCANNER_HOME = tool 'SonarQube'
-                PROJECT_NAME = "backend"
+                PROJECT_NAME = "authentication_back"
             }
             
             steps {
                 withSonarQubeEnv(installationName: 'SonarServer', credentialsId: 'sonar-credentials') {
-                sh "./gradlew sonarqube \
-                  -Dsonar.projectKey=${PROJECT_NAME} \
-                  -Dsonar.host.url=${env.SONAR_HOST_URL} \
-                  -Dsonar.login=${env.SONAR_AUTH_TOKEN} \
-                  -Dsonar.projectName=${PROJECT_NAME} \
-                  -Dsonar.projectVersion=${BUILD_NUMBER}"
+                     sh """$SCANNER_HOME/bin/sonar-scanner \
+                     -Dsonar.projectKey=$PROJECT_NAME \
+                     -Dsonar.java.binaries=buil/classes"""
                 }
              }
         }             
