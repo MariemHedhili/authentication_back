@@ -30,7 +30,21 @@ pipeline{
             } 
         } 
         
-      
+      stage('SonarQube Analysis') {
+            environment {
+                SCANNER_HOME = tool 'SonarQube'
+                PROJECT_NAME = "authentication_back"
+            }
+            steps {
+                            
+                withSonarQubeEnv(credentialsId: 'sonar-credentials',installationName: 'SonarServer') {
+                    sh """$SCANNER_HOME/bin/sonar-scanner \
+                        -Dsonar.projectKey=$PROJECT_NAME \
+                        -Dsonar.sources=. """
+                    
+                }              
+            }
+        }
     }
     }     
 
