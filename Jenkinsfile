@@ -19,7 +19,9 @@ pipeline{
         stage('Build SpringBoot App') {
             steps {
                 script {
-                    sh 'gradle clean build'
+                    
+                      sh './gradlew clean build'
+                    
                     }
                 }
             }
