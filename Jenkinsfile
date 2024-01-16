@@ -33,19 +33,20 @@ npipeline{
       stage('SonarQube Analysis') {
             environment {
                 SCANNER_HOME = tool 'SonarQube'
-                PROJECT_NAME = "backend"
+                PROJECT_NAME = "authentication_back"
             }
             steps {
                  dir('backend') {            
                  withSonarQubeEnv(credentialsId: 'sonar-credentials',installationName: 'SonarServer') {
                     sh """$SCANNER_HOME/bin/sonar-scanner \
                         -Dsonar.projectKey=$PROJECT_NAME \
-                        -Dsonar.java.binaries=target/classes"""
+                        -Dsonar.binaries=./build/classes
+                     
                     
                 }              
             }
             }
-        }
+        
     }
     }     
 
