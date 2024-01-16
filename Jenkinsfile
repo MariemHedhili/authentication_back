@@ -16,15 +16,17 @@ pipeline{
             }
         }
         
-        stage('Build SpringBoot App') {
+        stage('Build') {
             steps {
                 script {
-                    
-                      sh './gradlew clean build'
-                    
-                    }
+                    withGradle(gradle: 'gradle') {
+                        sh 'gradle clean build'
+                    } 
                 }
-            }
-        }
+            } 
+        } 
+        
+      
+    }
     }     
 
