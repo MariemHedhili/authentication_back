@@ -61,6 +61,15 @@ pipeline{
                 nexusArtifactUploader artifacts: [[artifactId: 'backapp', classifier: '', file: 'backapp.tar.gz', type: 'tar.gz']], credentialsId: 'nexus-credentials', groupId: 'backend', nexusUrl: 'nexus:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'back-repo', version: "1.${env.BUILD_NUMBER}.0"
             }
         }
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    dir('backend') {
+                        sh "docker build -t auth-back:${env.BUILD_NUMBER} ."
+                    }
+                }
+            }
+        }
             
     }
 }
