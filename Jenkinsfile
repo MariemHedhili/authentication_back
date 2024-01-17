@@ -27,7 +27,9 @@ pipeline{
                         sh 'gradle wrapper build'
                         sh' pwd'
                         sh 'ls -l'
-                        dir('backend')
+                        dir ('backend'){
+                            sh 'ls -l'
+                        }
                   } 
                 }
             } 
