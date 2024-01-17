@@ -29,7 +29,7 @@ pipeline{
                         sh 'ls -l'
                         dir ('backend'){
                             sh 'ls -l'
-                             dir (' gradle'){
+                             dir ('gradlew'){
                               sh 'ls -l'
                         }
                         }
