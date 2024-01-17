@@ -38,7 +38,7 @@ pipeline{
             } 
         } 
         
-      /*stage('SonarQube Analysis') {
+      stage('SonarQube Analysis') {
             environment {
                 SCANNER_HOME = tool 'SonarQube'
                 PROJECT_NAME = "authentication_back"
@@ -53,7 +53,7 @@ pipeline{
             
                  }
             }
-        }  */          
+        }            
             
     }
 }
