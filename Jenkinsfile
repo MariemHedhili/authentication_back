@@ -53,7 +53,14 @@ pipeline{
             
                  }
             }
-        }            
+        } 
+        stage('Upload app to nexus') {
+            steps {
+                
+                sh "tar -czvf frontapp.tar.gz ./backend"
+                nexusArtifactUploader artifacts: [[artifactId: 'backapp', classifier: '', file: 'backapp.tar.gz', type: 'tar.gz']], credentialsId: 'nexus-credentials', groupId: 'backend', nexusUrl: 'nexus:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'back-repo', version: "1.${env.BUILD_NUMBER}.0"
+            }
+        }
             
     }
 }
