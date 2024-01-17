@@ -26,7 +26,7 @@ pipeline{
                     sh 'gradle init'
                     //sh "echo 'building..'"
                     withGradle {
-                        sh 'gradle wrapper build'
+                        sh 'gradle wrapper build --scan'
                         sh' pwd'
                         sh 'ls -l'
                         dir ('backend'){
