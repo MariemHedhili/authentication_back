@@ -1,7 +1,7 @@
 FROM gradle:jdk17 AS build
 RUN mkdir -p /app
 WORKDIR /workspace
-COPY . .
+COPY .. .
 RUN gradle bootJar --no-daemon
 
 FROM openjdk:17-alpine
