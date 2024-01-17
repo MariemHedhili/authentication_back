@@ -25,14 +25,14 @@ pipeline{
                     sh "echo 'building..'"
                     withGradle {
                         sh 'gradle wrapper build'
-                        sh' pwd'
-                        sh 'ls -l'
+                        //sh' pwd'
+                        //sh 'ls -l'
                   } 
                 }
             } 
         } 
         
-      /*stage('SonarQube Analysis') {
+      stage('SonarQube Analysis') {
             environment {
                 SCANNER_HOME = tool 'SonarQube'
                 PROJECT_NAME = "authentication_back"
@@ -42,12 +42,12 @@ pipeline{
                  dir('backend') {
                     
                   withSonarQubeEnv(installationName: 'SonarServer', credentialsId: 'sonar-credentials') {
-                     sh '$SCANNER_HOME/bin/sonar-scanner -Dsonar.projectKey=$PROJECT_NAME -Dsonar.java.binaries=build.gradle.kts'
+                     sh '$SCANNER_HOME/bin/sonar-scanner -Dsonar.projectKey=$PROJECT_NAME -Dsonar.java.binaries=build/classes'
                 }
             
                  }
             }
-        } */            
+        }            
             
     }
 }
