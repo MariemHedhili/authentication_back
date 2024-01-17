@@ -23,16 +23,16 @@ pipeline{
                 script {
                     def jdkInstallation = tool name: 'JDK', type: 'hudson.model.JDK'
                     env.PATH = "${jdkInstallation}/bin:${env.PATH}"
-                    sh 'gradle init'
+                     dir('backend') {
+                     sh 'gradle init'
                     //sh "echo 'building..'"
-                    withGradle {
+                   
+                      withGradle {
                         sh 'gradle wrapper build --scan'
                         sh' pwd'
                         sh 'ls -l'
-                        dir ('backend'){
-                            sh 'ls -l'
-                             
-                        }
+                        
+                      }
                   } 
                 }
             } 
