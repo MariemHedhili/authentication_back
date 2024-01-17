@@ -25,14 +25,15 @@ pipeline{
                     sh "echo 'building..'"
                     withGradle {
                         sh 'gradle wrapper build'
-                        //sh' pwd'
-                        //sh 'ls -l'
+                        sh' pwd'
+                        sh 'ls -l'
+                        //dir('gradle.kts
                   } 
                 }
             } 
         } 
         
-      stage('SonarQube Analysis') {
+      /*stage('SonarQube Analysis') {
             environment {
                 SCANNER_HOME = tool 'SonarQube'
                 PROJECT_NAME = "authentication_back"
@@ -47,7 +48,7 @@ pipeline{
             
                  }
             }
-        }            
+        }  */          
             
     }
 }
