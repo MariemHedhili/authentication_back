@@ -1,0 +1,29 @@
+version: '3'
+services:
+  spring-boot:
+    image: meriemhedhili/auth-back:56
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgresql_db:5432/users_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    restart: always
+    depends_on:
+      #- angular
+      - postgresql_db
+
+ postgresql_db:
+    image: postgres
+    container_name: postgresql_db
+    volumes:
+      - postgresql_db_prod_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: users_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "6432:5432"
+
+
+volumes:
+  postgresql_db_prod_data:
+    driver: local
