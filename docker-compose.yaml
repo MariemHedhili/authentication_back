@@ -11,7 +11,7 @@ services:
       #- angular
       - postgresql_db
 
- postgresql_db:
+  postgresql_db:
     image: postgres
     container_name: postgresql_db
     volumes:
