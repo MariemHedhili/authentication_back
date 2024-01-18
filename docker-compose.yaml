@@ -17,7 +17,7 @@ services:
     image: postgres
     container_name: postgresql_db
     volumes:
-      - postgresql_db_prod_data:/var/lib/postgresql/data
+      - pg_data:/var/lib/postgresql/data
     environment:
       POSTGRES_DB: users_db
       POSTGRES_USER: postgres
@@ -27,5 +27,5 @@ services:
 
 
 volumes:
-  postgresql_db_prod_data:
+ pg_data:
     driver: local
